@@ -7,6 +7,7 @@ public class PigLatin {
 		//figured out that this app will only run correctly as long as the String ends with a space, which is bad
 		//edit logic to add a space to the end of the original string
 		//or fix the way the program runs to be able to collect the last word without a string issue - 
+		// also will loop continuously if there is a word that starts with a vowel
 	
 		String original = "";
 		String word = "";
@@ -53,6 +54,8 @@ public class PigLatin {
 		//if that first letter is a vowel print the word with 'way' on the end
 		if (letter1 == 'a' || letter1 == 'e' || letter1 == 'i' || letter1 == 'o' || letter1 == 'u') {
 			System.out.println(word + "way");
+			
+			startingPoint = index + 1;
 		} //if it starts with a consonant, convert to pig latin for consonants
 		else {
 			//find the first vowel in this word
