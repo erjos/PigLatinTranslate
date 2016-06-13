@@ -19,7 +19,9 @@ public class PigLatin {
 		int space = 0;
 		char vowel = 'x';
 		int iVowel = 0;
+		String restart = "";
 
+		do{
 		System.out.println("Welcome to the Pig Latin Translator!");
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter a line to be translated: ");
@@ -60,12 +62,13 @@ public class PigLatin {
 
 			// if the word starts with a vowel, add "way" to the ending
 			// tells us the character at the starting point for the word
+
 			char letter1 = word.charAt(0);
 
 			// if that first letter is a vowel print the word with 'way' on
 			// the end
 			if (letter1 == 'a' || letter1 == 'e' || letter1 == 'i' || letter1 == 'o' || letter1 == 'u') {
-				System.out.print(word + "way ");
+				System.out.print(word + "ay ");
 
 				startingPoint = index + 1;
 			} // if it starts with a consonant, convert to pig latin for
@@ -84,12 +87,26 @@ public class PigLatin {
 					}
 
 				}
+
+				String startword = word.substring(0, iVowel);
+
 				word = word.substring(iVowel, word.length());
-				System.out.print(word + letter1 + "ay ");
+
+				System.out.print(word + startword + "ay ");
 
 				startingPoint = index + 1;
 			}
 
 		} while (startingPoint <= (original.length() - word.length()));
+		System.out.println();
+		System.out.println("Would you like to transalte another? (Y/N)");
+		
+		restart = input.nextLine();
+		
+		startingPoint = 0;
+		
+		//in the greater "do while" loop, I need to consider that the starting point should be reset to zero
+		
+	} while(restart.equalsIgnoreCase("y"));
 	}
 }
